@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee  
+                 http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Activiti REST</display-name>
+
+	<listener>
+		<listener-class>org.activiti.rest.common.servlet.ActivitiServletContextListener</listener-class>
+	</listener>
+
+	<!-- Restlet adapter -->
+	<servlet>
+		<servlet-name>RestletServlet</servlet-name>
+		<servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
+		<init-param>
+			<!-- Application class name -->
+			<param-name>org.restlet.application</param-name>
+			<param-value>org.activiti.rest.service.application.ActivitiRestServicesApplication</param-value>
+		</init-param>
+	</servlet>
+
+	<!-- Catch all requests -->
+	<servlet-mapping>
+		<servlet-name>RestletServlet</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>H2Console</servlet-name>
+		<servlet-class>org.h2.server.web.WebServlet</servlet-class>
+		<!-- <init-param> <param-name>webAllowOthers</param-name> <param-value></param-value> 
+			</init-param> <init-param> <param-name>trace</param-name> <param-value></param-value> 
+			</init-param> -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>H2Console</servlet-name>
+		<url-pattern>/h2database/*</url-pattern>
+	</servlet-mapping>
+</web-app>
