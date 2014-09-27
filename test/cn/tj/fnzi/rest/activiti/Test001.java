@@ -57,8 +57,10 @@ public class Test001 extends BaseTest {
         }
     }
 
-    // @Test
-    // public void testBase64() {
-    // System.out.println(Base64.encode("kermit:kermit", "utf-8"));
-    // }
+//     @Test
+//     public void testBase64() {
+//     System.out.println(Base64.encode("kermit:kermit", "utf-8"));
+//     
+//     System.out.println(Base64.decode("a2VybWl0Omtlcm1pdA==", "utf-8"));
+//     }
 }
